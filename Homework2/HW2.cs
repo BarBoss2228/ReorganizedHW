@@ -82,46 +82,47 @@ namespace Homework2
             int a = GetNumberFromUser("Введите число А");
             int b = GetNumberFromUser("Введите число B");
             int c = GetNumberFromUser("Введите число С");
-            int[] arr = PrintNumbersInAscendingOrder(a, b, c);
+            string result = PrintNumbersInAscendingOrder(a, b, c);
+            Console.WriteLine($"Решение третьей задачи:{result}");
         }
-        public int [] PrintNumbersInAscendingOrder(int a,int b, int c)
+        public string PrintNumbersInAscendingOrder(int a,int b, int c)
         {
             int[] arr = { a, b, c };
             if (a > b && a > c)
             {
                 if (c > b)
                 {
-                    Console.WriteLine($"{b} {c} {a}");
+                    return $"{b} {c} {a}";
 
                 }
                 else
                 {
-                    Console.WriteLine($"{c} {b} {a}");
+                    return $"{c} {b} {a}";
                 }
             }
             else if (b > a && b > c)
             {
                 if (a > c)
                 {
-                    Console.WriteLine($"{c} {a} {b}");
+                    return $"{c} {a} {b}";
                 }
                 else
                 {
-                    Console.WriteLine($"{a} {c} {b}");
+                    return $"{a} {c} {b}";
                 }
             }
             else
             {
                 if (a > b)
                 {
-                    Console.WriteLine($"{b} {a} {c}");
+                    return $"{b} {a} {c}";
                 }
                 else
                 {
-                    Console.WriteLine($"{a} {b} {c}");
+                    return $"{a} {b} {c}";
                 }
             }
-            return arr;
+            
         }
 
         public void SolveTask4()
@@ -129,31 +130,63 @@ namespace Homework2
             int a = GetNumberFromUser("Введите число А");
             int b = GetNumberFromUser("Введите число B");
             int c = GetNumberFromUser("Введите число С");
-            SolveQuadraticEquation(a, b, c);
+            double[] result = SolveQuadraticEquation(a, b, c);
+            Console.WriteLine("Решение четвертой задачи: ");
+            AnalyzeArrayLength(result);
+            
+
+            
+            
+
+               
         }
 
-        public void SolveQuadraticEquation(int a,int b, int c)
+
+        public double[] SolveQuadraticEquation(int a,int b, int c)
         {
+
             double d = b* b - 4 * a * c;
             if (d > 0)
             {
                 double x1 = ((-b - Math.Sqrt(d)) / (2 * a));
                 double x2 = ((-b + Math.Sqrt(d)) / (2 * a));
-                Console.WriteLine($"Дискриминант больше нуля, первый корень:{x1}, второй корень {x2} ");
+                double[] twoRoots = new double[] { x1, x2 };
+                return twoRoots;
 
             }
             else if (d == 0)
             {
-                double x = (-b / 2 * a);
-                Console.WriteLine($"Дискриминант равен 0, корень равен: {x}");
+                double x = (-b / (2 * a));
+                double[] oneRoot = new double[] { x };
+                return oneRoot;
 
             }
             else
             {
-                Console.WriteLine("Дискриминант меньше нуля");
+                throw new ArgumentException("Нет действительных корней");
             }
 
         }
+
+        public void AnalyzeArrayLength(double[] result)
+        {
+            if (result.Length == 2)
+            {
+                for (int i = 0; i < result.Length; i++)
+                {
+                    Console.Write($"{result[i]} ");
+                }
+            }
+            else if (result.Length == 1)
+            {
+                for (int i = 0; i < result.Length; i++)
+                {
+                    Console.Write($"{result[i]} ");
+                }
+            }
+
+        }
+
 
         public void SolveTask5()
         {
@@ -161,141 +194,145 @@ namespace Homework2
             int d = a / 10;
             int u = a % 10;
 
-            SwitchNumbersToWords(a, d, u);
+           string result = SwitchNumbersToWords(a, d, u);
+            Console.WriteLine($"Результат решения пятой задачи:{result}");
         }
         
-        public void SwitchNumbersToWords(int a,int d, int u)
+        public string SwitchNumbersToWords(int a,int d, int u)
         {
 
             if (d == 0)
             {
-                SwitchVaruableU(u);
+                string units = SwitchVaruableU(u);
+                return units;
             }
             else if (d == 1)
             {
-                SwitchVaruableA(a);
+                string numbers = SwitchVaruableA(a);
+                return numbers;
             }
             else
             {
 
                 if (u == 0)
                 {
-                    SwitchVaruableD(d);
+                    string decimals = SwitchVaruableD(d);
+                    return decimals;
 
                 }
                 else
                 {
                     string dec = "";
                     string un = "";
-                    SwitchVaruablesDandU(d, u, dec, un);
+                    string doubleNumbers = SwitchVaruablesDandU(d, u, dec, un);
+                    return doubleNumbers;
                 }  
             }
 
         }
-        public void SwitchVaruableU(int u)
+        public string SwitchVaruableU(int u)
         {
             switch (u)
             {
                 case 0:
-                    Console.WriteLine("ноль");
-                    break;
+                   
+                    return "ноль";
+                    
                 case 1:
-                    Console.WriteLine("один");
-                    break;
+                    return "один";
+                    
                 case 2:
-                    Console.WriteLine("два");
-                    break;
+                    return "два";
+                    
                 case 3:
-                    Console.WriteLine("три");
-                    break;
+                    return "три";
+                    
                 case 4:
-                    Console.WriteLine("четыре");
-                    break;
+                    return"четыре";
+                    
                 case 5:
-                    Console.WriteLine("пять");
-                    break;
+                    return "пять";
+                    
                 case 6:
-                    Console.WriteLine("шесть");
-                    break;
+                    return "шесть";
+                    
                 case 7:
-                    Console.WriteLine("семь");
-                    break;
+                    return "семь";
                 case 8:
-                    Console.WriteLine("восемь");
-                    break;
+                    return "восемь";
                 case 9:
-                    Console.WriteLine("девять");
-                    break;
+                    return "девять";
+                    
             }
         }
-        public void SwitchVaruableA(int a)
+        public string SwitchVaruableA (int a)
         {
             switch (a)
             {
                 case 10:
-                    Console.WriteLine("десять");
-                    break;
+                    return "десять";
+                    
                 case 11:
-                    Console.WriteLine("одиннадцать");
-                    break;
+                    return "одиннадцать";
+                    
                 case 12:
-                    Console.WriteLine("двенадцать");
-                    break;
+                    return "двенадцать";
+                   
                 case 13:
-                    Console.WriteLine("тринадцать");
-                    break;
+                    return "тринадцать";
+                   
                 case 14:
-                    Console.WriteLine("четырнадцать");
-                    break;
+                    return "четырнадцать";
+                   
                 case 15:
-                    Console.WriteLine("пятнадцать");
-                    break;
+                    return "пятнадцать";
+                   
                 case 16:
-                    Console.WriteLine("шестнадцать");
-                    break;
+                    return "шестнадцать";
+                   
                 case 17:
-                    Console.WriteLine("семнадцать");
-                    break;
+                    return "семнадцать";
+                   
                 case 18:
-                    Console.WriteLine("восемнадцать");
-                    break;
+                    return "восемнадцать";
+                   
                 case 19:
-                    Console.WriteLine("девятнадцать");
-                    break;
+                    return "девятнадцать";
+                    
 
             }
         }
-        public void SwitchVaruableD(int d)
+        public string SwitchVaruableD(int d)
         {
             switch (d)
             {
                 case 2:
-                    Console.WriteLine("Двадцать");
-                    break;
+                    return "Двадцать";
+                    
                 case 3:
-                    Console.WriteLine("Тридцать");
-                    break;
+                    return "Тридцать";
+                   
                 case 4:
-                    Console.WriteLine("Сорок");
-                    break;
+                    return "Сорок";
+                    
                 case 5:
-                    Console.WriteLine("Пятьдесят");
-                    break;
+                    return "Пятьдесят";
+                    
                 case 6:
-                    Console.WriteLine("Шестьдесят");
-                    break;
+                    return "Шестьдесят";
+                    
                 case 7:
-                    Console.WriteLine("Семьдесят");
-                    break;
+                    return "Семьдесят";
+                   
                 case 8:
-                    Console.WriteLine("Восемьдесят");
-                    break;
+                    return "Восемьдесят";
+                   
                 case 9:
-                    Console.WriteLine("Девяносто");
-                    break;
+                    return "Девяносто";
+                    
             }
         }
-        public void SwitchVaruablesDandU(int d, int u, string dec, string un)
+        public string SwitchVaruablesDandU(int d, int u, string dec, string un)
         {
             dec = "";
             un = "";
@@ -357,7 +394,7 @@ namespace Homework2
                     un = "девять";
                     break;
             }
-            Console.WriteLine(dec + " " + un);
+            return (dec + " " + un);
         }
            
 
