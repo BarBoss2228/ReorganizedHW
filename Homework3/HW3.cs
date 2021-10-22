@@ -8,7 +8,8 @@ namespace Homework3
         {
             int a = GetNumberFromUser("Введите число а:");
             int b = GetNumberFromUser("Введите число b:");
-            ExponentiateUserNumber(a, b);
+            string result = ExponentiateUserNumber(a, b);
+            Console.WriteLine($"Результат первой задачи: {result}");
         }
         public int GetNumberFromUser(string message)
         {
@@ -17,21 +18,21 @@ namespace Homework3
             return number;
         }
 
-        public void ExponentiateUserNumber(int a,int b)
+        public string ExponentiateUserNumber(int a,int b)
         {
             if (b > 0)
             {
                 int c = ExponentiateUserNumberInAPositiveExponent(a, b);
-                Console.WriteLine($"{c}");
+                return $"{c}";
             }
             else if (b == 0)
             {
-                Console.WriteLine("1");
+                return "1";
             }
             else
             {
                 double z = ExponentiateUserNumberInANegativeExponent(a, b);
-                Console.WriteLine($"{z}");
+                return $"{z}";
             }
         }
 
@@ -57,15 +58,16 @@ namespace Homework3
         public void SolveTask2()
         {
             int a = GetNumberFromUser("Введите число а:");
-            PrinteNumbersDividedByUserNumber(a);
+            string result = PrinteNumbersDividedByUserNumber(a);
+            Console.WriteLine($"Результат второй задачи: {result}");
         }
 
-        public void PrinteNumbersDividedByUserNumber(int a)
+        public string PrinteNumbersDividedByUserNumber(int a)
         {
             int i = 1;
             do
             {
-                Console.WriteLine($"{a * i}");
+                return ($"{a * i}");
                 i++;
             }
             while (a * i < 1000);
@@ -74,9 +76,10 @@ namespace Homework3
         public void SolveTask3()
         {
             int a = GetNumberFromUser("Введите число а:");
-            FindPositiveInt(a);
+            string result = FindPositiveInt(a);
+            Console.WriteLine($"Результат третьей задачи: {result}");
         }
-        public void FindPositiveInt(int a)
+        public string FindPositiveInt(int a)
         {
             int i = 1;
             do
@@ -84,15 +87,16 @@ namespace Homework3
                 i++;
             }
             while (i * i < a);
-            Console.WriteLine($"{i - 1}");
+            return ($"{i - 1}");
         }
 
         public void SolveTask4()
         {
             int a = GetNumberFromUser("Введите число а:");
-            FindTheGreatestDivisor(a);
+            string result = FindTheGreatestDivisor(a);
+            Console.WriteLine($"Решение четвертой задачи: {result}");
         }
-        public void FindTheGreatestDivisor(int a)
+        public string FindTheGreatestDivisor(int a)
         {
             int i = a;
             do
@@ -100,7 +104,7 @@ namespace Homework3
                 i--;
             }
             while (i >= 1 && a % i != 0);
-            Console.WriteLine($"{i}");
+            return ($"{i}");
         }
 
         public void SolveTask5()
@@ -118,36 +122,31 @@ namespace Homework3
            
             if (a < b)
             {
-                sum = CalcFormula1(a, b, sum);
+                for (int i = a; i <= b; i++)
+                {
+                    if (i % 7 == 0)
+                    {
+                        sum = sum + i;
+                    }
+                }
+                return sum;
+                
             }
             else
             {
-                sum = CalcFormula2(a, b, sum);
-            }
-            return sum;
-        }
-        private int CalcFormula1(int a, int b, int sum)
-        {
-            for (int i = a; i <= b; i++)
-            {
-                if (i % 7 == 0)
+                for (int i = b; i <= a; i++)
                 {
-                    sum = sum + i;
+                    if (i % 7 == 0)
+                    {
+                        sum = sum + i;
+                    }
                 }
+                return sum;
+                
             }
-            return sum;
+            
         }
-        private int CalcFormula2(int a, int b, int sum)
-        {
-            for (int i = b; i <= a; i++)
-            {
-                if (i % 7 == 0)
-                {
-                    sum = sum + i;
-                }
-            }
-            return sum;
-        }
+        
 
         public void SolveTask6()
         {
@@ -163,7 +162,7 @@ namespace Homework3
             int sum = 0;
             if (n == 1 || n == 2)
             {
-                Console.WriteLine("1");
+                return sum = 1;
 
             }
             else
@@ -188,7 +187,8 @@ namespace Homework3
             int a = GetNumberFromUser("Введите число А");
             int b = GetNumberFromUser("Введите число B");
             int sum = FindTheGreatestCommonDivisor(a, b);
-            
+            Console.WriteLine($"НОД: {sum}");
+
         }
 
         public int FindTheGreatestCommonDivisor (int a,int b)
@@ -207,7 +207,7 @@ namespace Homework3
                 }
             }
             int sum = a + b;
-            Console.WriteLine($"НОД: {sum}");
+           
             return sum;
 
         
@@ -225,8 +225,40 @@ namespace Homework3
 
         public void SolveTask8()
         {
+            double number;
+            do
+            {
+                number = GetNumberFromUser("Введите положительное число:");
 
+                if (number < 0)
+                {
+                    Console.WriteLine("Число отрицательное.");
+                }
+            } while (number < 0);
+            Console.WriteLine($"Целое положительное число, которое является кубом целого числа {number} будет равным {SearchSqare(number)}");
         }
+        public double SearchSqare(double number)
+        {
+            double rightLimit = number;
+            double leftLimit = 0;
+            double result = 0;
+
+            while (rightLimit - leftLimit > 0.001)
+            {
+                result = (rightLimit + leftLimit) / 2;
+                if (result * result * result  > number)
+                {
+                    rightLimit = result;
+
+                }
+                else
+                {
+                    leftLimit = result;
+                }
+            }
+            return result;
+        }
+    
 
         public void SolveTask9()
         {
@@ -264,23 +296,35 @@ namespace Homework3
         public void SolveTask10()
         {
             int a = GetNumberFromUser("Введите число");
-            a = PrintTheMirroredNumber(a);
+            int result = PrintTheMirroredNumber(a);
+            
+            Console.WriteLine($"Результат решения десятой задачи: {result}");
         }
 
         public int PrintTheMirroredNumber(int a)
         {
-            Console.Write(a % 10);
-            while ((a /= 10) != 0)
-                Console.Write(a % 10);
-            return a;
+            
+            int result = 0;
+            while (a != 0 )
+            {
+                
+                int c = a % 10;
+                result = result * 10 + c;
+                a /= 10;
+            }
+            return result;
+                
+                
         }
         public void SolveTask11()
         {
             int a = GetNumberFromUser("Введите число");
-            PrintNumbers(a);
+            string result = PrintNumbers(a);
+            Console.WriteLine($"Решение одинадцатой задачи: {result}");
         }
-        public void PrintNumbers (int a)
+        public string PrintNumbers (int a)
         {
+            string result = "";
             int c = 0;
             int sumOdd = 0;
             int sumEven = 0;
@@ -309,30 +353,38 @@ namespace Homework3
                 while (z > 0);
                 if (sumEven > sumOdd)
                 {
-                    Console.WriteLine(i);
+                    result += i + " ";
                 }
             }
+            return result;
         }
         public void SolveTask12()
         {
-            Console.WriteLine("Введите число A:");
-            int a = Convert.ToInt32(Console.ReadLine());
-            Console.WriteLine("Введите число B:");
-            int b = Convert.ToInt32(Console.ReadLine());
+
+            int a = GetNumberFromUser("Введите число а");
+            int b = GetNumberFromUser("Введите число b");
+            string result = FindTheSameNumbers(a, b);
+            Console.WriteLine($"Решение двенадцатой задачи: {result}");
+            
+        }
+
+        public string FindTheSameNumbers (int a, int b)
+        {
+            
             while (a > 0)
             {
                 while (b > 0)
                 {
                     if (a % 10 == b % 10)
                     {
-                        Console.WriteLine("Yeees");
-                        return;
+                        
+                        return "Yeees";
                     }
                     b /= 10;
                 }
                 a /= 10;
             }
-            Console.WriteLine("Soory,bro, maybe next time");
+            return "Soory,bro, maybe next time";
         }
     }
 }

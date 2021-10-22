@@ -58,7 +58,7 @@ namespace Homework5
             return min;
         }
 
-        public void FindMinIndex(int[,] array)
+        public string FindMinIndex(int[,] array)
         {
             int min = array[0, 0];
             int index1 = 0;
@@ -76,11 +76,10 @@ namespace Homework5
                 }
 
             }
-            Console.WriteLine($"Минимальный элемент: {min}");
-            Console.WriteLine($"Индекс минимального элемента массива: {index1},{index2}");
+            return ($"Минимальный элемент: {min}\t Индекс минимального элемента массива: {index1},{index2}");
         }
 
-        public void FindMaxIndex(int[,] array)
+        public string FindMaxIndex(int[,] array)
         {
             int max = array[0, 0];
             int index1 = 0;
@@ -97,10 +96,9 @@ namespace Homework5
                     }
                 }
             }
-            Console.WriteLine($"Максимальный элемент: {max}");
-            Console.WriteLine($"Индекс максимального элемента массива: {index1},{index2}");
+            return ($"Максимальный элемент: {max}\t Индекс максимального элемента массива: {index1},{index2}");
         }
-        public void FindSumOfElements(int[,] array)
+        public string FindSumOfElements(int[,] array)
         {
             int counter = 0;
             for (int i = 0; i < array.GetLength(0); i++)
@@ -116,8 +114,8 @@ namespace Homework5
                     }
                 }
             }
-            Console.WriteLine("");
-            Console.WriteLine($"Число элементов с большими соседями:{counter}\t");
+            
+            return ($"Число элементов с большими соседями:{counter}\t");
         }
 
         public void ReverseTwoDimArray(int[,] array)
@@ -172,19 +170,22 @@ namespace Homework5
         public void SolveTask3()
         {
             int[,] array = GenerateRandomTwoDimensionalArray();
-            FindMinIndex(array);
+            string result = FindMinIndex(array);
+            Console.WriteLine(result);
         }
 
         public void SolveTask4()
         {
             int[,] array = GenerateRandomTwoDimensionalArray();
-            FindMaxIndex(array);
+            string result = FindMaxIndex(array);
+            Console.WriteLine(result);
 
         }
         public void SolveTask5()
         {
             int[,] array = GenerateRandomTwoDimensionalArray();
-            FindSumOfElements(array);
+            string result = FindSumOfElements(array);
+            Console.WriteLine(result);
 
         }
 

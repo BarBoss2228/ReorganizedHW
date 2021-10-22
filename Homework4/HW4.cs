@@ -28,8 +28,9 @@ namespace Homework4
             return array;
         }
         
-        public int FindMinValueInArray(int minValue, int [] array)
+        public int FindMinValueInArray( int [] array)
         {
+            int minValue = array[0];
             for (int i = 1; i < array.Length; i++)
             {
                 if (array[i] < minValue)
@@ -39,9 +40,9 @@ namespace Homework4
             }
             return minValue;
         }
-        public int FindMaxValueInArray(int maxValue, int [] array)
+        public int FindMaxValueInArray( int [] array)
         {
-            
+            int maxValue = array[0];
             for (int i = 1; i < array.Length; i++)
             {
                 if (array[i] > maxValue)
@@ -51,8 +52,9 @@ namespace Homework4
             }
             return maxValue;
         }
-        public int FindMinIndexInArray(int min, int[] array)
+        public int FindMinIndexInArray( int[] array)
         {
+            int min = array[0];
             int index = 0;
             for (int i = 1; i < array.Length; i++)
             {
@@ -62,12 +64,12 @@ namespace Homework4
                     index = i;
                 }
             }
-            Console.WriteLine();
+            
             return index;
         }
-        public int FindMaxIndexInArray(int max, int[] array)
+        public int FindMaxIndexInArray( int[] array)
         {
-            max = -1;
+            int max = -1;
             int index = -1;
             for (int i = 0; i < array.Length; i++)
             {
@@ -77,12 +79,13 @@ namespace Homework4
                     index = i;
                 }
             }
-            Console.WriteLine();
+           
             return index;
         }
      
-        public int CountSumOfOddNumbersInArray(int sum, int[] array)
+        public int CountSumOfOddNumbersInArray( int[] array)
         {
+            int sum = 0;
             for (int i = 1; i < array.Length; i += 2) 
             {
                 sum += array[i];
@@ -91,7 +94,7 @@ namespace Homework4
             return sum;
             
         }
-        public void PrintArrayInReverse(int[] array)
+        public void ReverseArray(int[] array)
         {
             for (int i = 0; i < array.Length / 2; i++)
             {
@@ -109,9 +112,9 @@ namespace Homework4
                 Console.Write($"{array[i]} ");
             }
         }
-        public int CountEvenNumbers(int count, int [] array)
+        public int CountEvenNumbers(int [] array)
         {
-            
+            int count = 0;
             foreach (int x in array)
             {
                 if (x % 2 == 1)
@@ -123,7 +126,7 @@ namespace Homework4
             return count;
         }
 
-        public void DivideArrayByTwo(int[] array)
+        public void SwitchHalfsOfTheArray(int[] array)
         {
             for (int i = 0; i < array.Length / 2; i++)
             {
@@ -133,7 +136,7 @@ namespace Homework4
             }
         }
 
-        public void CompleteBubbleSort (int[] array)
+        public void DoBubbleSort (int[] array)
         {
             int b,c;
             for (b = 0; b < array.Length; b++)
@@ -150,7 +153,7 @@ namespace Homework4
             }
         }
 
-        public void CompleteSelectSort(int[] array)
+        public void DoSelectSort(int[] array)
         {
             int min = array[0];
             int temp = 0;
@@ -177,43 +180,41 @@ namespace Homework4
         {
             int[] array = GenerateRandomArray();
             int minValue = array[0];
-            minValue = FindMinValueInArray(minValue, array);
+            minValue = FindMinValueInArray(array);
             Console.WriteLine();
-            Console.WriteLine("Минимальное число в массиве:");
-            Console.WriteLine(minValue);
+            Console.WriteLine($"Минимальное число в массиве: {minValue}");
         }
 
         public void SolveTask2()
         {
             int[] array = GenerateRandomArray();
             int maxValue = array[0];
-            maxValue = FindMaxValueInArray(maxValue, array);
+            maxValue = FindMaxValueInArray(array);
             Console.WriteLine();
-            Console.WriteLine("Максимальное число в массиве:");
-            Console.WriteLine(maxValue);
+            Console.WriteLine($"Максимальное число в массиве: {maxValue}");
+            
         }
         public void SolveTask3()
         {
             int[] array = GenerateRandomArray();
             int min = array[0];
-            int index = FindMinIndexInArray(min, array);
-            Console.WriteLine($"Индекс минимального элемента:{index}");
+            int index = FindMinIndexInArray( array);
+            Console.WriteLine();
+            Console.Write($"Индекс минимального элемента:{index}");
         }
 
         public void SolveTask4()
         {
             int[] array = GenerateRandomArray();
-            int max = 0;
-            int index = 0;
-            index = FindMaxIndexInArray(max, array);
+            int index = FindMaxIndexInArray(array);
+            Console.WriteLine("");
             Console.WriteLine($"Индекс максимального элемента:{index}");
         }
 
         public void SolveTask5()
         {
             int[] array = GenerateRandomArray();
-            int sum = 0;
-            sum = CountSumOfOddNumbersInArray(sum, array);
+            int sum = CountSumOfOddNumbersInArray(array);
             Console.WriteLine();
             Console.WriteLine($"Сумма нечетных элементов массива: {sum}");
 
@@ -222,7 +223,7 @@ namespace Homework4
         public void SolveTask6()
         {
             int[] array = GenerateRandomArray();
-            PrintArrayInReverse(array);
+            ReverseArray(array);
             PrintArray(array);
             
             
@@ -231,8 +232,7 @@ namespace Homework4
         public void SolveTask7()
         {
             int[] array = GenerateRandomArray();
-            int count = 0;
-            count = CountEvenNumbers(count, array);
+            int count = CountEvenNumbers(array);
             Console.WriteLine();
             Console.WriteLine($"Количество нечетных элементов: {count}");
         }
@@ -240,14 +240,14 @@ namespace Homework4
         public void SolveTask8()
         {
             int[] array = GenerateRandomArray();
-            DivideArrayByTwo(array);
+            SwitchHalfsOfTheArray(array);
             PrintArray(array);
         }
 
         public void SolveTask9()
         {
             int[] array = GenerateRandomArray();
-            CompleteBubbleSort(array);
+            DoBubbleSort(array);
             PrintArray(array);
 
         }
@@ -255,7 +255,7 @@ namespace Homework4
         public void SolveTask10()
         {
             int[] array = GenerateRandomArray();
-            CompleteSelectSort(array);
+            DoSelectSort(array);
             PrintArray(array);
 
 

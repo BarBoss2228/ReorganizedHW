@@ -132,13 +132,8 @@ namespace Homework2
             int c = GetNumberFromUser("Введите число С");
             double[] result = SolveQuadraticEquation(a, b, c);
             Console.WriteLine("Решение четвертой задачи: ");
-            AnalyzeArrayLength(result);
-            
-
-            
-            
-
-               
+            string finalResult = AnalyzeArrayLength(result);
+            Console.WriteLine($"{finalResult}");
         }
 
 
@@ -168,235 +163,152 @@ namespace Homework2
 
         }
 
-        public void AnalyzeArrayLength(double[] result)
+        public string  AnalyzeArrayLength(double[] result)
         {
             if (result.Length == 2)
             {
                 for (int i = 0; i < result.Length; i++)
                 {
-                    Console.Write($"{result[i]} ");
+                    return $"{result[i]} ";
                 }
             }
             else if (result.Length == 1)
             {
                 for (int i = 0; i < result.Length; i++)
                 {
-                    Console.Write($"{result[i]} ");
+                    return $"{result[i]} ";
                 }
             }
-
+            return "нет действительных корней";
         }
+
 
 
         public void SolveTask5()
         {
             int a = GetNumberFromUser("Введите двухзначное число");
-            int d = a / 10;
-            int u = a % 10;
-
-           string result = SwitchNumbersToWords(a, d, u);
+            string result = SwitchNumbersToWords(a);
             Console.WriteLine($"Результат решения пятой задачи:{result}");
         }
         
-        public string SwitchNumbersToWords(int a,int d, int u)
+        public string SwitchNumbersToWords(int a)
         {
-
-            if (d == 0)
+            string result = "";
+            if (a < 10) 
             {
-                string units = SwitchVaruableU(u);
-                return units;
+                throw new ArgumentException("Число должно быть двухзначным!");
             }
-            else if (d == 1)
+            int answer = a % 10;
+            int answer2 = a / 10;
+
+            if (a >= 10 && a < 20)
             {
-                string numbers = SwitchVaruableA(a);
-                return numbers;
+                switch (answer)
+                {
+                    case 0:
+                        result = "Десять";
+                        break;
+                    case 1:
+                        result = "Одиннадцать";
+                        break;
+                    case 2:
+                        result = "Двенадцать";
+                        break;
+                    case 3:
+                        result = "Тринадцать";
+                        break;
+                    case 4:
+                        result = "Четырнадцать";
+                        break;
+                    case 5:
+                        result = "Пятнадцать";
+                        break;
+                    case 6:
+                        result = "Шестнадцать";
+                        break;
+                    case 7:
+                        result = "Семнадцать";
+                        break;
+                    case 8:
+                        result = "Восемнадцать";
+                        break;
+                    case 9:
+                        result = "Девятнадцать";
+                        break;
+                    default:
+                        break;     
+                }
+                return result;
             }
             else
             {
-
-                if (u == 0)
+                switch (answer2)
                 {
-                    string decimals = SwitchVaruableD(d);
-                    return decimals;
-
+                    case 2:
+                        result = "Двадцать ";
+                        break;
+                    case 3:
+                        result = "Тридцать ";
+                        break;
+                    case 4:
+                        result = "Сорок ";
+                        break;
+                    case 5:
+                        result = "Пятьдесят ";
+                        break;
+                    case 6:
+                        result = "Шестьдесят ";
+                        break;
+                    case 7:
+                        result = "Семдесят ";
+                        break;
+                    case 8:
+                        result = "Восемьдесят ";
+                        break;
+                    case 9:
+                        result = "Девяносто ";
+                        break;
+                    default:
+                        break;
+                        
                 }
-                else
+                switch (answer)
                 {
-                    string dec = "";
-                    string un = "";
-                    string doubleNumbers = SwitchVaruablesDandU(d, u, dec, un);
-                    return doubleNumbers;
-                }  
+                    case 1:
+                        result = result + "один";
+                        break;
+                    case 2:
+                        result = result + "два";
+                        break;
+                    case 3:
+                        result = result + "три";
+                        break;
+                    case 4:
+                        result = result + "четыре";
+                        break;
+                    case 5:
+                        result = result + "пять";
+                        break;
+                    case 6:
+                        result = result + "шесть";
+                        break;
+                    case 7:
+                        result = result + "семь";
+                        break;
+                    case 8:
+                        result = result + "восемь";
+                        break;
+                    case 9:
+                        result = result + "девять";
+                        break;
+                    default:
+                        break;
+                }
+                return result;
             }
 
         }
-        public string SwitchVaruableU(int u)
-        {
-            switch (u)
-            {
-                case 0:
-                   
-                    return "ноль";
-                    
-                case 1:
-                    return "один";
-                    
-                case 2:
-                    return "два";
-                    
-                case 3:
-                    return "три";
-                    
-                case 4:
-                    return"четыре";
-                    
-                case 5:
-                    return "пять";
-                    
-                case 6:
-                    return "шесть";
-                    
-                case 7:
-                    return "семь";
-                case 8:
-                    return "восемь";
-                case 9:
-                    return "девять";
-                    
-            }
-        }
-        public string SwitchVaruableA (int a)
-        {
-            switch (a)
-            {
-                case 10:
-                    return "десять";
-                    
-                case 11:
-                    return "одиннадцать";
-                    
-                case 12:
-                    return "двенадцать";
-                   
-                case 13:
-                    return "тринадцать";
-                   
-                case 14:
-                    return "четырнадцать";
-                   
-                case 15:
-                    return "пятнадцать";
-                   
-                case 16:
-                    return "шестнадцать";
-                   
-                case 17:
-                    return "семнадцать";
-                   
-                case 18:
-                    return "восемнадцать";
-                   
-                case 19:
-                    return "девятнадцать";
-                    
-
-            }
-        }
-        public string SwitchVaruableD(int d)
-        {
-            switch (d)
-            {
-                case 2:
-                    return "Двадцать";
-                    
-                case 3:
-                    return "Тридцать";
-                   
-                case 4:
-                    return "Сорок";
-                    
-                case 5:
-                    return "Пятьдесят";
-                    
-                case 6:
-                    return "Шестьдесят";
-                    
-                case 7:
-                    return "Семьдесят";
-                   
-                case 8:
-                    return "Восемьдесят";
-                   
-                case 9:
-                    return "Девяносто";
-                    
-            }
-        }
-        public string SwitchVaruablesDandU(int d, int u, string dec, string un)
-        {
-            dec = "";
-            un = "";
-
-            switch (d)
-            {
-                case 2:
-                    dec = "Двадцать";
-                    break;
-                case 3:
-                    dec = "Тридцать";
-                    break;
-                case 4:
-                    dec = "Сорок";
-                    break;
-                case 5:
-                    dec = "Пятьдесят";
-                    break;
-                case 6:
-                    dec = "Шестьдесят";
-                    break;
-                case 7:
-                    dec = "Семьдесят";
-                    break;
-                case 8:
-                    dec = "Восемьдесят";
-                    break;
-                case 9:
-                    dec = "Девяносто";
-                    break;
-            }
-            switch (u)
-            {
-                case 1:
-                    un = "один";
-                    break;
-                case 2:
-                    un = "два";
-                    break;
-                case 3:
-                    un = "три";
-                    break;
-                case 4:
-                    un = "четыре";
-                    break;
-                case 5:
-                    un = "пять";
-                    break;
-                case 6:
-                    un = "шесть";
-                    break;
-                case 7:
-                    un = "семь";
-                    break;
-                case 8:
-                    un = "восемь";
-                    break;
-                case 9:
-                    un = "девять";
-                    break;
-            }
-            return (dec + " " + un);
-        }
-           
+        
 
 
 
