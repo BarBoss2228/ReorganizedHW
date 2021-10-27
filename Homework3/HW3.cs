@@ -58,28 +58,32 @@ namespace Homework3
         public void SolveTask2()
         {
             int a = GetNumberFromUser("Введите число а:");
-            string result = PrinteNumbersDividedByUserNumber(a);
+            string result = PrintNumbersDividedByUserNumber(a);
             Console.WriteLine($"Результат второй задачи: {result}");
         }
 
-        public string PrinteNumbersDividedByUserNumber(int a)
+        public string PrintNumbersDividedByUserNumber(int a)
         {
             int i = 1;
+            string result = " ";
             do
             {
-                return ($"{a * i}");
+                
+                
+                result = $"{result } {a * i}\t";
                 i++;
             }
             while (a * i < 1000);
+            return result;
         }
 
         public void SolveTask3()
         {
             int a = GetNumberFromUser("Введите число а:");
-            string result = FindPositiveInt(a);
+            int result = FindPositiveInt(a);
             Console.WriteLine($"Результат третьей задачи: {result}");
         }
-        public string FindPositiveInt(int a)
+        public int FindPositiveInt(int a)
         {
             int i = 1;
             do
@@ -87,7 +91,7 @@ namespace Homework3
                 i++;
             }
             while (i * i < a);
-            return ($"{i - 1}");
+            return i - 1;
         }
 
         public void SolveTask4()

@@ -56,25 +56,38 @@ namespace Homework2
         public int ConvertInputToBinary(int x, int y)
         {
             int z = 2 * y + x;
-            switch (z)
+            if (x == 0 && y == 0)
             {
-                case 1:
-                    Console.WriteLine("Четвертая четверть");
-                    break;
-                case 2:
-                    Console.WriteLine("Вторая четверть");
-                    break;
-                case 3:
-                    Console.WriteLine("Первая четверть");
-                    break;
-                default:
-                    Console.WriteLine("Третья четверть");
-                    break;
-
-
-
+                throw new ArgumentException("Точки находятся в центре");
             }
-            return z;
+            else if (x == 0 || y == 0)
+            {
+                throw new ArgumentException("Одна из точек лежит на оси");
+            }
+            else
+            {
+
+
+                switch (z)
+                {
+                    case 1:
+                        Console.WriteLine("Четвертая четверть");
+                        break;
+                    case 2:
+                        Console.WriteLine("Вторая четверть");
+                        break;
+                    case 3:
+                        Console.WriteLine("Первая четверть");
+                        break;
+                    default:
+                        Console.WriteLine("Третья четверть");
+                        break;
+
+
+
+                }
+                return z;
+            }
         }
 
         public void SolveTask3()
