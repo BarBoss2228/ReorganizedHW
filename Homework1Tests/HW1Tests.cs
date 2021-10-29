@@ -12,10 +12,15 @@ namespace Homework1Tests
             _hw1 = new HW1();
         }
 
-        [Test]
-        public void Test1()
+        [TestCase(1,2,9)]
+        public void CalcFormula(int a, int b, double expected)
         {
-            Assert.Pass();
+            //arrange
+            //act
+            double actual = _hw1.CalcFormula(a, b);
+            //assert
+            Assert.AreEqual(expected, actual);
+
         }
     }
 }

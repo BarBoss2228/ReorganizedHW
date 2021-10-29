@@ -30,12 +30,14 @@ namespace Homework3Tests
             //assert
             Assert.AreEqual(expected, actual);
         }*/
-        [TestCase()]
+        [TestCase(2,3,8)]
         public void ExponentiateUserNumberInAPositiveExponent(int a,int b, int expected)
         {
             //arrange
             //act
             int actual = _hw3.ExponentiateUserNumberInAPositiveExponent(a, b);
+            //assert
+            Assert.AreEqual(expected, actual);
         }
     }
 }
