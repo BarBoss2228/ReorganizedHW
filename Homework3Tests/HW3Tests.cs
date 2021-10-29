@@ -21,5 +21,21 @@ namespace Homework3Tests
             //assert 
             Assert.AreEqual(expected,actual);
         }
+        /*[TestCase("24", 24)]
+        public void GetNumberFromUser(string a, int expected)
+        {
+            //arrange
+            //act
+            int actual = _hw3.GetNumberFromUser(a);
+            //assert
+            Assert.AreEqual(expected, actual);
+        }*/
+        [TestCase()]
+        public void ExponentiateUserNumberInAPositiveExponent(int a,int b, int expected)
+        {
+            //arrange
+            //act
+            int actual = _hw3.ExponentiateUserNumberInAPositiveExponent(a, b);
+        }
     }
 }
