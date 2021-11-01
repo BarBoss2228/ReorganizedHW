@@ -180,7 +180,7 @@ namespace Homework2
 
         public string  AnalyzeArrayLength(double[] result)
         {
-            if (result.Length >= 1)
+            if (result.Length > 0)
             {
                 for (int i = 0; i < result.Length; i++)
                 {
