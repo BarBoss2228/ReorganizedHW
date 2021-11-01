@@ -45,7 +45,8 @@ namespace Homework2
         {
             int x = GetNumberFromUserModified("Введите число X");
             int y = GetNumberFromUserModified("Введите число Y");
-            int z = ConvertInputToBinary(x, y);
+            string result  = ConvertInputToBinary(x, y);
+            Console.WriteLine($"{result}");
         }
         public int GetNumberFromUserModified(string message)
         {
@@ -53,41 +54,42 @@ namespace Homework2
             int number = Convert.ToInt32(Console.ReadLine()) > 0 ? 1 : 0;
             return number;
         }
-        public int ConvertInputToBinary(int x, int y)
+        public string ConvertInputToBinary(int x, int y)
         {
             int z = 2 * y + x;
+            string result = "";
             if (x == 0 && y == 0)
             {
-                throw new ArgumentException("Точки находятся в центре");
+                result = ("Точки находятся в центре");
             }
             else if (x == 0 || y == 0)
             {
-                throw new ArgumentException("Одна из точек лежит на оси");
+                
+                result = ("Одна из точек лежит на оси");
             }
             else
             {
-
-
                 switch (z)
                 {
                     case 1:
-                        Console.WriteLine("Четвертая четверть");
+                        result = ("Четвертая четверть");
                         break;
                     case 2:
-                        Console.WriteLine("Вторая четверть");
+                        result = ("Вторая четверть");
                         break;
                     case 3:
-                        Console.WriteLine("Первая четверть");
+                        result = ("Первая четверть");
                         break;
                     default:
-                        Console.WriteLine("Третья четверть");
+                        result = ("Третья четверть");
                         break;
 
 
 
                 }
-                return z;
+                
             }
+            return result;
         }
 
         public void SolveTask3()
@@ -178,20 +180,14 @@ namespace Homework2
 
         public string  AnalyzeArrayLength(double[] result)
         {
-            if (result.Length == 2)
+            if (result.Length >= 1)
             {
                 for (int i = 0; i < result.Length; i++)
                 {
                     return $"{result[i]} ";
                 }
             }
-            else if (result.Length == 1)
-            {
-                for (int i = 0; i < result.Length; i++)
-                {
-                    return $"{result[i]} ";
-                }
-            }
+
             return "нет действительных корней";
         }
 

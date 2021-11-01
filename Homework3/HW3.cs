@@ -85,6 +85,10 @@ namespace Homework3
         }
         public int FindPositiveInt(int a)
         {
+            if (a == 0)
+            {
+                return 0;
+            }
             int i = 1;
             do
             {
@@ -97,10 +101,10 @@ namespace Homework3
         public void SolveTask4()
         {
             int a = GetNumberFromUser("Введите число а:");
-            string result = FindTheGreatestDivisor(a);
+            int result = FindTheGreatestDivisor(a);
             Console.WriteLine($"Решение четвертой задачи: {result}");
         }
-        public string FindTheGreatestDivisor(int a)
+        public int FindTheGreatestDivisor(int a)
         {
             int i = a;
             do
@@ -108,18 +112,18 @@ namespace Homework3
                 i--;
             }
             while (i >= 1 && a % i != 0);
-            return ($"{i}");
+            return i;
         }
 
         public void SolveTask5()
         {
             int a = GetNumberFromUser("Введите число а:");
             int b = GetNumberFromUser("Введите число b:");
-            int sum = PrintSumFromRange(a,b);
+            int sum = CalcSumFromRange(a,b);
             Console.WriteLine($"{sum}");
 
         }
-        public int PrintSumFromRange(int a, int b)
+        public int CalcSumFromRange(int a, int b)
         {
             
             int sum = 0;
@@ -175,7 +179,7 @@ namespace Homework3
             }
             return sum;
         }
-        private int CycleForFibanacciNumber(int n,int prev1,int prev2,int sum)
+        public int CycleForFibanacciNumber(int n,int prev1,int prev2,int sum)
         {
             for (int i = 3; i <= n; i++)
             {
@@ -239,9 +243,9 @@ namespace Homework3
                     Console.WriteLine("Число отрицательное.");
                 }
             } while (number < 0);
-            Console.WriteLine($"Целое положительное число, которое является кубом целого числа {number} будет равным {SearchSqare(number)}");
+            Console.WriteLine($"Целое положительное число, которое является кубом целого числа {number} будет равным {SearchSquare(number)}");
         }
-        public double SearchSqare(double number)
+        public double SearchSquare(double number)
         {
             double rightLimit = number;
             double leftLimit = 0;
@@ -286,7 +290,7 @@ namespace Homework3
             }
             else
             {
-                for (int i = userInput; i != 0; i++)
+            for (int i = userInput; i != 0; i++)
                 {
                     if (i % 2 != 0)
                     {
@@ -323,10 +327,10 @@ namespace Homework3
         public void SolveTask11()
         {
             int a = GetNumberFromUser("Введите число");
-            string result = PrintNumbers(a);
+            string result = CountOddNumbersInInput(a);
             Console.WriteLine($"Решение одинадцатой задачи: {result}");
         }
-        public string PrintNumbers (int a)
+        public string CountOddNumbersInInput (int a)
         {
             string result = "";
             int c = 0;

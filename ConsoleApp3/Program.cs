@@ -18,16 +18,16 @@ namespace ConsoleApp3
             //hw1.SolveTask4();
             //hw1.SolveTask5();
 
-            //HW2 hw2 = new HW2();
+            HW2 hw2 = new HW2();
             //hw2.SolveTask1();
             //hw2.SolveTask2();
             //hw2.SolveTask3();
-            //hw2.SolveTask4();
+            hw2.SolveTask4();
             //hw2.SolveTask5();
 
-            HW3 hw3 = new HW3();
+            //HW3 hw3 = new HW3();
             //hw3.SolveTask1();
-            hw3.SolveTask2();
+            //hw3.SolveTask2();
             //hw3.SolveTask3();
             //hw3.SolveTask4();
             //hw3.SolveTask5();
