@@ -182,10 +182,11 @@ namespace Homework2
         {
             if (result.Length > 0)
             {
-                for (int i = 0; i < result.Length; i++)
+                for (int i = 0; i < result.Length; i++) // - что это значит?(
                 {
                     return $"{result[i]} ";
                 }
+                
             }
 
             return "нет действительных корней";
