@@ -58,11 +58,10 @@ namespace Homework5
             return min;
         }
 
-        public string FindMinIndex(int[,] array)
+        public int[] FindMinIndex(int[,] array)
         {
             int min = array[0, 0];
-            int index1 = 0;
-            int index2 = 0;
+            int[] index = new int[2];
             for (int i = 0; i < array.GetLength(0); i++)
             {
                 for (int j = 0; j < array.GetLength(1); j++)
@@ -70,20 +69,19 @@ namespace Homework5
                     if (min > array[i, j])
                     {
                         min = array[i, j];
-                        index1 = i;
-                        index2 = j;
+                        index[0] = i;
+                        index[1] = j;
                     }
                 }
 
             }
-            return ($"Минимальный элемент: {min}\t Индекс минимального элемента массива: {index1},{index2}");
+            return index;
         }
 
-        public string FindMaxIndex(int[,] array)
+        public int[] FindMaxIndex(int[,] array)
         {
             int max = array[0, 0];
-            int index1 = 0;
-            int index2 = 0;
+            int[] index = new int[2];
             for (int i = 0; i < array.GetLength(0); i++)
             {
                 for (int j = 0; j < array.GetLength(1); j++)
@@ -91,14 +89,14 @@ namespace Homework5
                     if (array[i, j] > max)
                     {
                         max = array[i, j];
-                        index1 = i;
-                        index2 = j;
+                        index[0] = i;
+                        index[1]= j;
                     }
                 }
             }
-            return ($"Максимальный элемент: {max}\t Индекс максимального элемента массива: {index1},{index2}");
+            return index;
         }
-        public string FindSumOfElements(int[,] array)
+        public int FindTheNumberOfElements(int[,] array)
         {
             int counter = 0;
             for (int i = 0; i < array.GetLength(0); i++)
@@ -115,7 +113,7 @@ namespace Homework5
                 }
             }
             
-            return ($"Число элементов с большими соседями:{counter}\t");
+            return counter;
         }
 
         public void ReverseTwoDimArray(int[,] array)
@@ -170,22 +168,22 @@ namespace Homework5
         public void SolveTask3()
         {
             int[,] array = GenerateRandomTwoDimensionalArray();
-            string result = FindMinIndex(array);
-            Console.WriteLine(result);
+            int [] result = FindMinIndex(array);
+            Console.WriteLine($"\n минимальный элемент массива: {result[0]}, {result[1]}");
         }
 
         public void SolveTask4()
         {
             int[,] array = GenerateRandomTwoDimensionalArray();
-            string result = FindMaxIndex(array);
-            Console.WriteLine(result);
+            int[] result = FindMaxIndex(array);
+            Console.WriteLine($"\n максимальный элемент массива: {result[0]}, {result[1]}");
 
         }
         public void SolveTask5()
         {
             int[,] array = GenerateRandomTwoDimensionalArray();
-            string result = FindSumOfElements(array);
-            Console.WriteLine(result);
+            int result = FindTheNumberOfElements(array);
+            Console.WriteLine($"Число элементов с большими соседями:{result}\t");
 
         }
 

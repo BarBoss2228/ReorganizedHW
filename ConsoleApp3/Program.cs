@@ -18,11 +18,11 @@ namespace ConsoleApp3
             //hw1.SolveTask4();
             //hw1.SolveTask5();
 
-            HW2 hw2 = new HW2();
+            //HW2 hw2 = new HW2();
             //hw2.SolveTask1();
             //hw2.SolveTask2();
             //hw2.SolveTask3();
-            hw2.SolveTask4();
+            //hw2.SolveTask4();
             //hw2.SolveTask5();
 
             //HW3 hw3 = new HW3();
@@ -52,7 +52,7 @@ namespace ConsoleApp3
             //hw4.SolveTask10();
 
 
-            HW5 hw5 = new HW5();
+            //HW5 hw5 = new HW5();
             //hw5.SolveTask1();
             //hw5.SolveTask2();
             //hw5.SolveTask3();
